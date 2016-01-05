@@ -1,0 +1,5 @@
+UsersController = AppController.extend({
+  data: {
+
+  }
+});

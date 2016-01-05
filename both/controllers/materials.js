@@ -1,0 +1,5 @@
+MaterialsController = AppController.extend({
+  data: {
+
+  }
+});

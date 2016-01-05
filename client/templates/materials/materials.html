@@ -1,0 +1,140 @@
+<template name="materials">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Materiales
+            <small>Detalle de los Materiales</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Materiales</li>
+          </ol>
+        </section>
+      
+        <section class="content">
+        <div class="row" style="margin-right:0px">
+        {{# each materials }}
+           <!-- Comienza los widgets -->
+        <div class="col-md-4">
+          <!-- Widget: user widget style 1 -->
+          <div class="box box-widget widget-user" style="background-color: #222d32; margin:5px; border-radius: 10px;">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header" style="color: white; text-align: center;">
+              <h3 class="widget-user-username">{{name}}</h3>
+              <h5 class="widget-user-desc">Stock</h5>
+            </div>
+            <div class="widget-user-image">
+              <div align="center" style="margin-bottom: 10px;"><img class="img-circle" src="http://victoralvarado.com/wp-content/uploads/2009/08/AdidasLogo.jpg"></div>
+            </div>
+            <div class="box-footer" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
+              <div class="row">
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">{{buy}}</h5>
+                    <span class="description-text">Comprados</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 border-right">
+                  <div class="description-block">
+                    <h5 class="description-header">Material</h5>
+                    <span class="description-text">{{name}}</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4">
+                  <div class="description-block">
+                    <h5 class="description-header">{{stock}}</h5>
+                    <span class="description-text">Stock</span>
+                  </div>
+                  <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+         <!--      <button type="button" class="btn btn-danger delete">Borar</button>
+              <button type="button" class="btn btn-warning edit">Editar</button> -->
+              <button type="button" class="btn btn-warning edit" style="width:100%">Detalle</button>
+
+            </div>
+          </div>
+
+          <!-- Terminan los widgets -->
+        </div> 
+        {{/ each }}
+        </div>
+
+        <div class="row">
+        <div class="content tablecenter">
+        {{> tabular table=TabularTables.Materials class="table table-striped table-bordered table-condensed table-hover"}}
+        </div>
+        </div>
+  
+
+          <section class="content-header">
+            <h1 style="margin-left: 10px">
+            Crear Material
+            <small>Ingresa los requerimientos</small>
+            </h1>
+          </section>
+           <div class="row">
+        <div class="content tablecenter">
+             {{#autoForm collection="Materials" id="materials" type="insert"}}
+    <fieldset>
+      <legend>Crear Material</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='buy'}}
+      {{> afQuickField name='stock'}}
+      {{> afQuickField name='media'}}
+    </fieldset>
+    <div align="right"><button type="submit" class="btn btn-primary">Crear Material</button></div>
+  {{/autoForm}}
+        </div>
+        </div>
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+</template>
+
+<template name="ShowMaterials">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Material</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Materiales</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content tablecenter">
+
+  {{#autoForm collection="Materials" doc=this id="ShowMaterials" type="update"}}
+    <fieldset>
+      <legend>Editar Material</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name='buy'}}
+      {{> afQuickField name='stock'}}
+      {{> afQuickField name='media'}}
+    </fieldset>
+    <div align="right">
+    <button type="button" class="btn btn-danger remove">Borrar Material</button>
+    <button type="button" class="btn btn-default cancel">Cancelar</button>
+    <button type="submit" class="btn btn-primary cancel">Guardar</button>
+    </div>
+  {{/autoForm}}
+</div>
+</div>
+  {{> _appFooter}}
+</template>
