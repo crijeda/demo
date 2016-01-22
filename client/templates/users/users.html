@@ -29,7 +29,7 @@
         <div class="content tablecenter">
         {{#autoForm schema=schema id="createUsertForm" type="method" meteormethod="createUser"}}
           <fieldset>
-            <legend>Crear un Nuevo Usuario</legend>
+            <legend><i class="ion-person-add"></i> CREAR NUEVO USUARIO</legend>
             {{> afQuickField name="username"}}
             {{> afQuickField name="email"}}
             {{> afQuickField name="roles"}}
@@ -73,13 +73,13 @@
             <legend>Perfil de {{username}} - {{emails.[0].address}}</legend>
             {{> afQuickField name="username"}}
             {{> afQuickField name="createdAt"}}
-            {{> afQuickField name="email" placeholder="{{emails.[0].address}}"}}
+            {{> afQuickField name="email"}}
             {{> afQuickField name="roles"}}
             {{> afQuickField name="password" label="Ingresa nueva constraseña"}}
             {{> afQuickField name="passwordConfirmation"}}
             <div align="right">
-              <button type="reset" class="btn btn-default">Reset</button>
-              <button type="submit" class="btn btn-primary">Submit</button>             
+              <button type="reset" class="btn btn-default">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Actualizar</button>             
             </div>
           </fieldset>
       {{/autoForm}}
@@ -178,4 +178,7 @@
 </div>
 
 </body>
+</template>
+<template name="ButtonShowUsers">
+  <div align="center"><button type="button" class="btn btn-xs btn-default edit"><i class="ion-gear-b"> Editar</i></button></div>
 </template>

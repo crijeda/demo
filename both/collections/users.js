@@ -59,7 +59,8 @@ TabularTables.Users = new Tabular.Table({
     {data: "username", title: "Nombre Usuario"},
     // {data: "status", title: "Rol"},
     {data: "emails.[0].address", title: "Email"},
-    {data: "createdAt", title: "Fecha de Creación"}
+    {data: "createdAt", title: "Fecha de Creación"},
+    {tmpl: Meteor.isClient && Template.ButtonShowUsers}
   ]
 
 });

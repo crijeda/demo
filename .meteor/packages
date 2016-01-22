@@ -15,7 +15,6 @@ mrt:underscore-string-latest
 matb33:collection-hooks
 dburles:factory
 anti:fake
-cunneen:mailgun
 iron:router@1.0.0
 yasinuslu:blaze-meta
 aldeed:collection2
@@ -26,3 +25,9 @@ maazalik:highcharts
 pagebakers:ionicons
 accounts-ui
 accounts-password
+dhtmlx:scheduler
+cfs:standard-packages
+cfs:filesystem
+cfs:autoform
+bevanhunt:leaflet
+email

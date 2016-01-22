@@ -26,7 +26,11 @@
               <h5 class="widget-user-desc">Stock</h5>
             </div>
             <div class="widget-user-image">
-              <div align="center" style="margin-bottom: 10px;"><img class="img-circle" src="http://victoralvarado.com/wp-content/uploads/2009/08/AdidasLogo.jpg"></div>
+            {{#if fileId}}
+              <div align="center" style="margin-bottom: 10px;"><img class="img-circle" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></div>
+            {{else}}
+            <div align="center" style="margin-bottom: 10px;"><img class="img-circle" src="http://d.ibtimes.co.uk/en/full/1370699/adidas-logo.png"></div>
+            {{/if}} 
             </div>
             <div class="box-footer" style="border-bottom-left-radius: 10px; border-bottom-right-radius: 10px">
               <div class="row">
@@ -84,21 +88,26 @@
           </section>
            <div class="row">
         <div class="content tablecenter">
-             {{#autoForm collection="Materials" id="materials" type="insert"}}
+    {{#autoForm collection="Materials" id="materials" type="insert"}}
     <fieldset>
       <legend>Crear Material</legend>
       {{> afQuickField name='name'}}
       {{> afQuickField name='buy'}}
       {{> afQuickField name='stock'}}
-      {{> afQuickField name='media'}}
+      {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
+
+
     </fieldset>
     <div align="right"><button type="submit" class="btn btn-primary">Crear Material</button></div>
   {{/autoForm}}
-        </div>
-        </div>
 
+        </div>
+        </div>
         </section><!-- /.content -->
+
       </div><!-- /.content-wrapper -->
+
+
 </template>
 
 <template name="ShowMaterials">
@@ -126,10 +135,10 @@
       {{> afQuickField name='name'}}
       {{> afQuickField name='buy'}}
       {{> afQuickField name='stock'}}
-      {{> afQuickField name='media'}}
+      {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
     </fieldset>
     <div align="right">
-    <button type="button" class="btn btn-danger remove">Borrar Material</button>
+    <button type="button" class="btn btn-danger remove">Borrar</button>
     <button type="button" class="btn btn-default cancel">Cancelar</button>
     <button type="submit" class="btn btn-primary cancel">Guardar</button>
     </div>

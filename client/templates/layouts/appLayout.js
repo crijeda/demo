@@ -76,3 +76,12 @@ Template.appLayout.rendered = function() {
   }
 
 });
+
+Template._appHeader.helpers({
+    messages: function() {
+      return Messages.find().fetch();
+    },
+    count: function() {
+      return Messages.find().count();
+    },
+});

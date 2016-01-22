@@ -5,6 +5,14 @@ Template.users.rendered = function() {
 if (Meteor.isClient) {
   // This code only runs on the client
 
+ Template.ButtonShowUsers.events({
+    'click .edit': function () {
+    // alert(this._id);
+    window.location = Router.url('users')+'/'+ this._id;
+    
+  },
+});
+
  Template.users.helpers({
 
 schema: function () {
@@ -29,18 +37,16 @@ Template.login.events({
       event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password)
+  
 
-        var user = Meteor.user();
+              Meteor.loginWithPassword(email, password, function(error){
+            if(error){
+                Router.go('loginf');
 
-        if (!user) {
-
-            Router.go('loginf');
-            // alert('Usuario y Contraseña Invalidos');
-        } else {
-        
-           Router.go('dashboard');
-        }
+            } else {
+                Router.go("dashboard");
+            }
+        });
     }
 });
 Template.loginf.events({
@@ -48,18 +54,15 @@ Template.loginf.events({
       event.preventDefault();
         var email = $('[name=email]').val();
         var password = $('[name=password]').val();
-        Meteor.loginWithPassword(email, password)
+  
+              Meteor.loginWithPassword(email, password, function(error){
+            if(error){
+                Router.go('loginf');
 
-        var user = Meteor.user();
-
-        if (!user) {
-
-            Router.go('loginf');
-            // alert('Usuario y Contraseña Invalidos');
-        } else {
-        
-           Router.go('dashboard');
-        }
+            } else {
+                Router.go("dashboard");
+            }
+        });
     }
 });
 

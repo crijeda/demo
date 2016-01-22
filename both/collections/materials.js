@@ -18,22 +18,16 @@ Materials.attachSchema(new SimpleSchema({
     type: Number,
     label: "Stock Actual"
   },
-
-  media: {
-    type: String,
-    label: "Fotografia del Material",
-    optional: true,
-    autoform: {
-      afFieldInput: {
-        type: "file"
-      }
-    }
+  fileId: {
+    type: String
   }
+
 }));
 
 if (Meteor.isClient) {
   // This code only runs on the client
   Meteor.subscribe("materials");
+  Meteor.subscribe("uploads");
 
  Template.materials.helpers({
 

@@ -5,6 +5,7 @@ Template.materials.rendered = function() {
 if (Meteor.isClient) {
   // This code only runs on the client
   Meteor.subscribe("materials");
+  Meteor.subscribe("uploads");
 
  Template.materials.helpers({
 
@@ -13,6 +14,16 @@ if (Meteor.isClient) {
     return router
 
   },
+  // uploads:function(){
+  //     var file = _.pluck(Materials.find({_id: "Hd3MQbByRp6M5CqzY"}).fetch(), 'fileId');
+  //     var media = _.pluck(Uploads.find({_id: file}).fetch(), 'url');
+  //     console.log(media) 
+
+  // },
+  // media:function(){
+  //       var id = Materials.findOne({_id:this._id});
+  //     return Uploads.find({_id:id}).url;
+  // }     
 
 });
 
@@ -21,7 +32,15 @@ Template.materials.events({
     // alert(this._id);
     window.location = Router.url('materials')+'/'+ this._id;
     
-  }
+  },
+  // 'change .fileInput':function(event,template){
+  //     FS.Utility.eachFile(event,function(file){
+  //     var fileObj= new FS.File(file);
+  //     Uploads.insert(fileObj,function(err){
+  //       console.log(err)
+  //     })
+  //   })
+  //   }
 });
 
 Template.ShowMaterials.events({
