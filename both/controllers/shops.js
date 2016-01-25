@@ -1,0 +1,5 @@
+ShopsController = AppController.extend({
+  data: {
+
+  }
+});

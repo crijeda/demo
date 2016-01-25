@@ -1,0 +1,5 @@
+MeteorchatController = AppController.extend({
+  data: {
+
+  }
+});

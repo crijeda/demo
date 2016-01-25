@@ -1,0 +1,93 @@
+<template name="cities">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Ciudades
+            <small>Ciudades Ingresadas</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Ciudades</li>
+          </ol>
+        </section>
+      
+        <section class="content">
+     
+        <div class="row">
+        <div class="content tablecenter">
+   <!--      {{# each materials }}
+        
+        
+        {{/ each }} -->
+
+        {{> tabular table=TabularTables.Cities class="table table-striped table-bordered table-condensed table-hover"}}
+        </div>
+        </div>
+        <div class="row">
+        <div class="content tablecenter">
+        <br>
+           {{#autoForm collection="Cities" id="insertCitiesForm" type="insert"}}
+            <fieldset>
+              <legend>INGRESAR NUEVA CIUDAD</legend>
+              {{> afQuickField name='name'}}
+              {{> afQuickField name='zoneId'}}
+              {{> afQuickField name='countryId'}}
+            </fieldset>
+            <br>
+            <div align="right">
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+         {{/autoForm}}
+        </div>
+        </div>
+        
+        </section>
+      </div>
+</template>
+
+<template name="ShowCities">
+{{> _appHeader}}
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Ciudades
+            <small>Aqui puedes ingresar los Ciudades donde trabajan</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Ciudad</li>
+          </ol>
+        </section>
+      
+        <section class="content">
+     
+        <div class="row">
+        <div class="content tablecenter">
+   <!--      {{> quickForm collection="Cities" doc=this id="ShowCities" type="update"}} -->
+        {{#autoForm collection="Cities" doc=this id="ShowCities" type="update"}}
+          <fieldset>
+            <legend>Editar Ciudad</legend>
+            {{> afQuickField name='name'}}
+            {{> afQuickField name='zoneId'}}
+            {{> afQuickField name='countryId'}}
+          </fieldset>
+          <div align="right">
+          <button type="button" class="btn btn-danger remove">Borrar</button>
+          <button type="button" class="btn btn-default cancel">Cancelar</button>
+          <button type="submit" class="btn btn-primary cancel">Guardar</button>
+          </div>
+        {{/autoForm}}       
+        </div>
+        </div>
+        
+        </section>
+      </div>
+      {{> _appFooter}}
+</template>
+<template name="ButtonShowCities">
+  <div align="center"><button type="button" class="btn btn-xs btn-default edit"><i class="ion-gear-b"> Editar</i></button></div>
+</template>

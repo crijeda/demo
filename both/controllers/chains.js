@@ -1,0 +1,5 @@
+ChainsController = AppController.extend({
+  data: {
+
+  }
+});

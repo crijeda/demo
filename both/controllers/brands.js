@@ -1,0 +1,5 @@
+BrandsController = AppController.extend({
+  data: {
+
+  }
+});

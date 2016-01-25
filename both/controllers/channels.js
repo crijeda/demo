@@ -1,0 +1,5 @@
+ChannelsController = AppController.extend({
+  data: {
+
+  }
+});
