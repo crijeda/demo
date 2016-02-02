@@ -1,3 +1,13 @@
+Router.onBeforeAction(function () {
+    if (!Meteor.user() && !Meteor.loggingIn()) {
+        Router.go('login');
+    } else {
+        // required by Iron to process the route handler
+        this.next();
+    }
+}, {
+    except: ['login','loginf']
+});
 Router.route('/home', {
   name: 'home',
   layoutTemplate: 'publicLayout'
@@ -10,7 +20,15 @@ Router.route('/', {
 Router.route('/materials', {
   name: 'materials'
 });
-
+Router.route('/materials2', {
+  name: 'materials2'
+});
+Router.route('/stock', {
+  name: 'stock'
+});
+Router.route('/campaigns', {
+  name: 'campaigns'
+});
 Router.route('/login', {
   name: 'login'
 });
@@ -74,6 +92,22 @@ Router.route('/materials/:_id', function () {
   var item = Materials.findOne({_id: this.params._id});
   this.render('ShowMaterials', {data: item});
 });
+Router.route('/materials2/:_id', function () {
+  var item = Materials2.findOne({_id: this.params._id});
+  this.render('ShowMaterials2', {data: item});
+});
+Router.route('/campaigns/:_id', function () {
+  var item = Campaigns.findOne({_id: this.params._id});
+  this.render('ShowCampaigns', {data: item});
+});
+Router.route('/campaigns/timeline/:_id', function () {
+  var item = Campaigns.findOne({_id: this.params._id});
+  this.render('Timeline', {data: item});
+});
+Router.route('/stock/:_id', function () {
+  var item = Stock.findOne({_id: this.params._id});
+  this.render('ShowStock', {data: item});
+});
 Router.route('/branchs/:_id', function () {
   var item = Branchs.findOne({_id: this.params._id});
   this.render('ShowBranchs', {data: item});
@@ -94,6 +128,7 @@ Router.route('/chains/:_id', function () {
   var item = Chains.findOne({_id: this.params._id});
   this.render('ShowChains', {data: item});
 });
+
 
 // Router.plugin('ensureSignedIn', {
 //   only: ['dashboard','materials']

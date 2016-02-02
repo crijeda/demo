@@ -1,0 +1,306 @@
+<template name="campaigns">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Campañas
+            <small>Detalle de los Campañaes</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Campañaes</li>
+          </ol>
+        </section>
+      
+        <section class="content">
+        <div class="row">
+        {{# each campaigns }}
+        <div class="col-md-6">
+        <div class="info-box" style="background: {{color}};">
+            <span class="info-box-icon">{{#if fileId}}
+              <div align="center"><img class="img-circle circle2" style="margin-bottom: 10px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></div>
+            {{else}}
+            <div align="center"><img class="img-circle circle2" style="margin-bottom: 10px;" src="http://d.ibtimes.co.uk/en/full/1370699/adidas-logo.png"></div>
+            {{/if}}</span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">{{name}}</span>
+              <span class="info-box-number">5,200</span>
+               <div align="right">
+            <button type="button" class="btn btn-primary">Timeline</button>
+            <button type="button" class="btn btn-default">Detalle</button>
+            </div>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 50%"></div>
+              </div>
+                  <span class="progress-description">
+                    50% Increase in 30 Days
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          </div>
+          {{/each}}
+          </div>
+          <section class="content-header">
+            <h1 style="margin-left: 10px">
+            Crear Campaña
+            <small>Ingresa los requerimientos</small>
+            </h1>
+          </section>
+           <div class="row">
+        <div class="content">
+    {{#autoForm collection="Campaigns" id="campaigns" type="insert"}}
+    <fieldset>
+      <legend>Crear Campaña</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
+      {{> afQuickField name='description'}}
+      {{> afQuickField name='color'}}
+
+
+    </fieldset>
+    <div align="right"><button type="submit" class="btn btn-primary">Crear Campaña</button></div>
+  {{/autoForm}}
+
+        </div>
+        </div>
+        </section><!-- /.content -->
+
+      </div><!-- /.content-wrapper -->
+
+
+</template>
+
+<template name="ShowCampaigns">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Campaña</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Campañaes</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content tablecenter">
+
+  {{#autoForm collection="Campaigns" doc=this id="ShowCampaigns" type="update"}}
+    <fieldset>
+      <legend>Editar Campaña</legend>
+      {{> afQuickField name='name'}}
+      {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
+      {{> afQuickField name='description'}}
+      {{> afQuickField name='color'}}
+    </fieldset>
+    <div align="right">
+    <button type="button" class="btn btn-danger remove">Borrar</button>
+    <button type="button" class="btn btn-default cancel">Cancelar</button>
+    <button type="submit" class="btn btn-primary cancel">Guardar</button>
+    </div>
+  {{/autoForm}}
+</div>
+</div>
+  {{> _appFooter}}
+</template>
+<template name="Timeline">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Timeline</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Campañaes</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content">
+
+<!-- {{#autoForm schema=schema type="insert" id="Timeline"}}
+  {{> afQuickField name="type" options="allowed" noselect=true}}
+  {{#if afFieldValueIs name="type" value="Comunicado"}}
+    {{> afQuickField name="user"}}
+    {{> afQuickField name="comment"}}
+  {{/if}}
+{{/autoForm}} -->
+<div class="content tablecenter">
+<div class="row">
+{{#autoForm collection="Campaigns" doc=this id="Timeline" type="update-pushArray" scope="timeline"}}
+<fieldset>
+<div class="col-md-4">
+<legend>1. Selecciona el Tipo de Evento</legend>
+{{> afQuickField name="type" options="allowed" noselect=true label=false}}
+</div>
+{{#if afFieldValueIs name="type" value="Petición"}}
+<div class="col-md-4">
+<legend>2. Selecciona los Encargados</legend>
+    {{> afQuickField name="userIdsend" label="Coordinador"}}
+    {{> afQuickField name="userIdreceive" label="Responsable"}}
+</div>
+<div class="col-md-4">
+<legend>3. Escribe el Mensaje</legend>
+    {{> afQuickField name="comment" style="height: 134px;" label=false}}
+</div>
+{{/if}}
+{{#if afFieldValueIs name="type" value="Comunicado"}}
+<div class="col-md-8">
+<legend>2. Escribe el Mensaje</legend>
+    {{> afQuickField name="comment" style="height: 134px;" label=false}}
+</div>
+{{/if}}
+{{#if afFieldValueIs name="type" value="Imagen"}}
+<div class="col-md-4">
+<legend>2. Sube la Imagen</legend>
+    {{> afQuickField name="fileId" type="cfs-file" collection="uploads" label=false}}
+</div>
+<div class="col-md-4">
+<legend>3. Escribe el Mensaje</legend>
+    {{> afQuickField name="comment" style="height: 134px;" label=false}}
+</div>
+{{/if}}
+{{#if afFieldValueIs name="type" value="Video"}}
+<div class="col-md-4">
+<legend>2. Ingresa la URL del Video</legend>
+    {{> afQuickField name="url" label=false}}
+</div>
+<div class="col-md-4">
+<legend>3. Escribe el Mensaje</legend>
+    {{> afQuickField name="comment" style="height: 134px;" label=false}}
+</div>
+{{/if}}
+</fieldset>
+<div align="right"><button type="submit" class="btn btn-primary cancel">Crear Evento</button></div>
+{{/autoForm}}
+</div>
+</div>
+
+  <ul class="timeline">
+  {{# each timeline.[0]}}
+
+  {{#if typeIs "Comunicado"}}
+  <li class="time-label">
+                  <span class="bg-blue">
+                    {{formatDate2 createdAt}}
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-envelope bg-blue"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> {{formatTime createdAt}}</span>
+
+                <h3 class="timeline-header"><a href="#">Comuniacado Oficial</a></h3>
+
+                <div class="timeline-body">
+                {{comment}}
+                </div>
+                <div class="timeline-footer">
+                  <a class="btn btn-primary btn-xs">Leer Mas</a>
+                  <a class="btn btn-danger btn-xs">Responder</a>
+                </div>
+              </div>
+            </li> 
+  {{/if}}
+  {{#if typeIs "Petición"}}
+  <li class="time-label">
+                  <span class="bg-aqua">
+                    {{formatDate2 createdAt}}
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-user bg-aqua"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> {{formatTime createdAt}}</span>
+
+                <h3 class="timeline-header"><a href="#">Petición</a> de <a>{{username userIdsend}}</a></h3>
+
+                <div class="timeline-body">
+                {{comment}}
+                <br>
+                <a href="#">ENCARGADO: {{username userIdreceive}}</a>
+                </div>
+                <div class="timeline-footer">
+                </div>
+              </div>
+            </li>  
+  {{/if}}
+    {{#if typeIs "Imagen"}}
+  <li class="time-label">
+                  <span class="bg-purple">
+                    {{formatDate2 createdAt}}
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+            <li>
+              <i class="fa fa-camera bg-purple"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> {{formatTime createdAt}}</span>
+
+                <h3 class="timeline-header"><a href="#">{{username user}}</a> subió una foto</h3>
+
+                <div class="timeline-body">
+                  <img src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}" alt="..." class="margin">
+                </div>
+                {{comment}}
+              </div>
+            </li>
+  {{/if}}
+    {{#if typeIs "Video"}}
+  <li class="time-label">
+                  <span class="bg-maroon">
+                    {{formatDate2 createdAt}}
+                  </span>
+            </li>
+            <!-- /.timeline-label -->
+            <!-- timeline item -->
+           <li>
+              <i class="fa fa-video-camera bg-maroon"></i>
+
+              <div class="timeline-item">
+                <span class="time"><i class="fa fa-clock-o"></i> {{formatTime createdAt}}</span>
+
+                <h3 class="timeline-header"><a href="#">{{username user}}</a> compartio un video</h3>
+
+                <div class="timeline-body">
+                  <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="{{url}}" frameborder="0" allowfullscreen=""></iframe>
+                  </div>
+                </div>
+                <div class="timeline-footer">
+                 <!--  <a href="#" class="btn btn-xs bg-maroon">Lee los comentarios</a> -->
+                </div>
+                {{comment}}
+              </div>
+            </li>
+  {{/if}}
+  {{/each}}
+    <li>
+              <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+          </ul>
+
+</div>
+</div>
+  {{> _appFooter}}
+</template>

@@ -1,0 +1,94 @@
+<template name="stock">
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Stock
+            <small>Detalle de los Movimientos</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Stock</li>
+          </ol>
+        </section>
+      
+        <section class="content">
+       
+        <div class="row">
+        <div class="content tablecenter">
+        {{> tabular table=TabularTables.Stock class="table table-striped table-bordered table-condensed table-hover"}}
+        </div>
+        </div>
+  
+
+          <section class="content-header">
+       <!--      <h1 style="margin-left: 10px">
+            Crear Movimiento
+            <small>Ingresa los requerimientos</small>
+            </h1> -->
+          </section>
+           <div class="row">
+        <div class="content tablecenter">
+    {{#autoForm collection="Stock" id="stock" type="insert"}}
+    <fieldset>
+      <legend>CREAR ENVIO</legend>
+      {{> afQuickField name='send'}}
+      {{> afQuickField name='branchId'}}
+      {{> afQuickField name='sendorder'}}
+      <!-- {{> afQuickField name="receive"}} -->
+
+
+    </fieldset>
+    <div align="right"><button type="submit" class="btn btn-primary">Ingresar Envío</button></div>
+  {{/autoForm}}
+
+        </div>
+        </div>
+        </section><!-- /.content -->
+
+      </div><!-- /.content-wrapper -->
+
+
+</template>
+
+<template name="ShowStock">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Material</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Materiales</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content tablecenter">
+
+  {{#autoForm collection="Stock" doc=this id="showstock" type="update"}}
+    <fieldset>
+      <legend>CREAR ENVIO</legend>
+      {{> afQuickField name='send'}}
+      {{> afQuickField name='branchId'}}
+      {{> afQuickField name='sendorder'}}
+      {{> afQuickField name="receive"}}
+    </fieldset>
+    <div align="right">
+    <button type="button" class="btn btn-danger remove">Borrar</button>
+    <button type="button" class="btn btn-default cancel">Cancelar</button>
+    <button type="submit" class="btn btn-primary cancel">Guardar</button>
+    </div>
+  {{/autoForm}}
+</div>
+</div>
+  {{> _appFooter}}
+</template>
+<template name="ButtonShowStock">
+  <div align="center"><button type="button" class="btn btn-xs btn-default edit"><i class="ion-gear-b"> Detalle</i></button></div>
+</template>

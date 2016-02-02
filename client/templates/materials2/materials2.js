@@ -1,5 +1,67 @@
-Template.appLayout.rendered = function() {
-	$('.sidebar-toggle').each(function() {
+Template.materials2.rendered = function() {
+
+};
+
+if (Meteor.isClient) {
+  // This code only runs on the client
+  Meteor.subscribe("materials2");
+  Meteor.subscribe("uploads");
+
+ Template.materials2.helpers({
+
+  router: function() {
+    var router = Router.current().route.getName();
+    return router
+
+  },
+  // uploads:function(){
+  //     var file = _.pluck(Materials2.find({_id: "Hd3MQbByRp6M5CqzY"}).fetch(), 'fileId');
+  //     var media = _.pluck(Uploads.find({_id: file}).fetch(), 'url');
+  //     console.log(media) 
+
+  // },
+  // media:function(){
+  //       var id = Materials2.findOne({_id:this._id});
+  //     return Uploads.find({_id:id}).url;
+  // }     
+
+});
+
+Template.materials2.events({
+  'click .edit': function () {
+    // alert(this._id);
+    window.location = Router.url('materials2')+'/'+ this._id;
+    
+  },
+  // 'change .fileInput':function(event,template){
+  //     FS.Utility.eachFile(event,function(file){
+  //     var fileObj= new FS.File(file);
+  //     Uploads.insert(fileObj,function(err){
+  //       console.log(err)
+  //     })
+  //   })
+  //   }
+});
+
+Template.ShowMaterials2.events({
+
+    'click .remove': function () {
+    Materials2.remove(this._id);
+    // alert(this._id);
+    Router.go('materials2');
+    
+  },
+     'click .cancel': function () {
+    // alert(this._id);
+    Router.go('materials2');
+    
+  }
+});
+
+}
+
+Template.ShowMaterials2.rendered = function() {
+  $('.sidebar-toggle').each(function() {
         var group = $(this);
         $(this).find(".btn").click(function(e) {
             group.find(".btn.active").removeClass("active");
@@ -58,35 +120,4 @@ Template.appLayout.rendered = function() {
             e.preventDefault();
         }
     });
-
-        
-    }
-
-    Template.appLayout.events({
-    'click .logout': function(event){
-        event.preventDefault();
-        Meteor.logout();
-        Router.go('login');
-    },
-
-  'click .profile': function () {
-    // alert(this._id);
-    window.location = Router.url('users')+'/'+ Meteor.userId();
-    
-  }
-
-});
-
-Template._appHeader.helpers({
-    messages: function() {
-      return Messages.find().fetch();
-    },
-    count: function() {
-      return Messages.find().count();
-    },
-
-});
-
-Template.registerHelper('formatDate', function(date) {
-  return moment(date).format('DD-MM-YYYY');
-})
+}

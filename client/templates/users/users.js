@@ -2,6 +2,7 @@ Template.users.rendered = function() {
 
 };
 
+
 if (Meteor.isClient) {
   // This code only runs on the client
 
@@ -13,10 +14,31 @@ if (Meteor.isClient) {
   },
 });
 
+Template.ShowProfile.events({
+
+    'click .remove': function () {
+    Meteor.users.remove(this._id);
+    // alert(this._id);
+    Router.go('users');
+    
+  },
+     'click .cancel': function () {
+    // alert(this._id);
+    Router.go('users');
+    
+  }
+});
  Template.users.helpers({
 
 schema: function () {
         return Schema.createUserFormSchema;
+    },
+ RolesOptions: function () {
+        return {
+      "Admin": "Admin",
+      "Chief": "Jefe",
+      "Executive": "Ejecutivo"
+        }
     }
 
 });

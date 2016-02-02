@@ -1,0 +1,5 @@
+StockController = AppController.extend({
+  data: {
+
+  }
+});

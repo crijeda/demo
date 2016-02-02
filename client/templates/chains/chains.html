@@ -19,7 +19,7 @@
            <!-- Comienza los widgets -->
         <div class="col-md-3">
           <!-- Widget: user widget style 1 -->
-          <div class="box box-widget widget-user" style="background-color: #fff; margin:5px; border-radius: 10px;">
+          <div class="box box-widget widget-user" style="background-color: #fff; margin:5px; border-radius: 10px; border-top-width: 1px;">
             <!-- Add the bg color to the header using any of the bg-* classes -->
             <div class="widget-user-header" style="color: gray; text-align: center;">
               <h3 class="widget-user-username">{{name}}</h3>
@@ -55,17 +55,17 @@
         </div>
   
 
-          <section class="content-header">
+       <!--    <section class="content-header">
             <h1 style="margin-left: 10px">
             Crear Cadena
             <small>Ingresa los requerimientos</small>
             </h1>
-          </section>
+          </section> -->
            <div class="row">
         <div class="content tablecenter">
     {{#autoForm collection="Chains" id="chains" type="insert"}}
     <fieldset>
-      <legend>Crear Cadena</legend>
+      <legend><a><i class="ion-link" style="font-size:30px;"></i> CREAR CADENA</a></legend>
       {{> afQuickField name='name'}}
       {{> afQuickField name='channelId'}}
       {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}

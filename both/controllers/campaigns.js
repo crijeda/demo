@@ -1,0 +1,5 @@
+CampaignsController = AppController.extend({
+  data: {
+
+  }
+});

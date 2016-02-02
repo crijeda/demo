@@ -2,7 +2,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="{{ pathFor 'dashboard' }}" class="logo"><b>Xflow</b>®</a>
+        <a href="{{ pathFor 'dashboard' }}" class="logo" style="background-color: white;"><img src="{{ pathFor 'dashboard' }}images/flowlive.png" style="height: 35px;"></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
@@ -179,7 +179,8 @@
                                 <img src="{{ pathFor 'dashboard' }}images/user2-160x160.jpg" class="img-circle" alt="User Image" />
                                 <p>
                                     {{currentUser.emails.[0].address}}
-                                    <small>Member since Nov. 2012</small>
+                                    <small>Miembro desde {{formatDate currentUser.createdAt }}</small>
+                                   <!--  <small>Ultimo ingreso {{formatDate currentUser.resume.loginTokens.[0].when }}</small> -->
                                 </p>
                             </li>
                             <!-- Menu Body -->
@@ -226,7 +227,7 @@
                     <img src="{{ pathFor 'dashboard' }}images/user2-160x160.jpg" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Alexander Pierce</p>
+                    <p>{{currentUser.username}}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -284,7 +285,8 @@
             <span>Campañas</span> <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="materials">Materiales</a></li>
+            <li><a href="{{ pathFor 'campaigns' }}">Mis Campañas</a></li>
+            <li><a href="{{ pathFor 'materials2' }}">Materiales</a></li>
             <li><a href="implementacion">Implementacion</a></li>
           </ul>
         </li>

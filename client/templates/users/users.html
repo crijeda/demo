@@ -27,14 +27,16 @@
         </div>
         <div class="row">
         <div class="content tablecenter">
-        {{#autoForm schema=schema id="createUsertForm" type="method" meteormethod="createUser"}}
+        {{#autoForm schema=schema id="createUsertForm" type="method" meteormethod="createUser2"}}
           <fieldset>
-            <legend><i class="ion-person-add"></i> CREAR NUEVO USUARIO</legend>
+            <legend><a><i class="ion-person-add" style="font-size:30px;"></i> CREAR NUEVO USUARIO</a></legend>
             {{> afQuickField name="username"}}
             {{> afQuickField name="email"}}
-            {{> afQuickField name="roles"}}
-            {{> afQuickField name="password"}}
-            {{> afQuickField name="passwordConfirmation"}}
+            {{> afQuickField name="roles" type="select" options=RolesOptions}}
+            {{> afQuickField name="zoneId"}}
+            {{> afQuickField name="phone"}}
+            {{> afQuickField name="password" type="password"}}
+            {{> afQuickField name="passwordConfirmation" type="password"}}
             <div align="right">
               <button type="reset" class="btn btn-default">Reset</button>
               <button type="submit" class="btn btn-primary">Crear</button>             
@@ -68,21 +70,21 @@
      
         <div class="row">
         <div class="content tablecenter">
-        {{#autoForm schema=schema id="ShowProfile" doc=this type="method" meteormethod="updateUser"}}
+        {{> quickForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}}
+<!--         {{#autoForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}}
           <fieldset>
             <legend>Perfil de {{username}} - {{emails.[0].address}}</legend>
             {{> afQuickField name="username"}}
-            {{> afQuickField name="createdAt"}}
             {{> afQuickField name="email"}}
-            {{> afQuickField name="roles"}}
-            {{> afQuickField name="password" label="Ingresa nueva constraseña"}}
+            {{> afQuickField name="zoneId"}}
             {{> afQuickField name="passwordConfirmation"}}
             <div align="right">
-              <button type="reset" class="btn btn-default">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Actualizar</button>             
+              <button type="button" class="btn btn-danger remove">Borrar</button>
+              <button type="button" class="btn btn-default cancel">Cancelar</button>
+              <button type="submit" class="btn btn-primary cancel">Guardar</button>           
             </div>
           </fieldset>
-      {{/autoForm}}
+      {{/autoForm}} -->
         </div>
         </div>
         
@@ -94,7 +96,8 @@
     <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="login.php"><b>Whizzcloud</b>®</a>
+    <!-- <a href=""><b>Whizzcloud</b>®</a> -->
+    <img src="images/flowlive.png" style="height: 90px;">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -138,7 +141,8 @@
     <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="login.php"><b>Whizzcloud</b>®</a>
+    <!-- <a href="login.php"><b>Whizzcloud</b>®</a> -->
+    <img src="images/flowlive.png" style="height: 90px;">
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
@@ -180,5 +184,5 @@
 </body>
 </template>
 <template name="ButtonShowUsers">
-  <div align="center"><button type="button" class="btn btn-xs btn-default edit"><i class="ion-gear-b"> Editar</i></button></div>
+  <div align="center"><button type="button" class="btn btn-xs btn-primary edit"><i class="ion-gear-b"> Editar</i></button></div>
 </template>
