@@ -5,11 +5,11 @@
         <section class="content-header">
           <h1 style="margin-left: 10px">
             Campañas
-            <small>Detalle de los Campañaes</small>
+            <small>Detalle de los Campañas</small>
           </h1>
           <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Campañaes</li>
+            <li class="active">Campañas</li>
           </ol>
         </section>
       
@@ -28,8 +28,10 @@
               <span class="info-box-text">{{name}}</span>
               <span class="info-box-number">5,200</span>
                <div align="right">
-            <button type="button" class="btn btn-primary">Timeline</button>
-            <button type="button" class="btn btn-default">Detalle</button>
+           <!--  <button type="button" class="btn btn-warning"><a style="color: white;" href="{{ pathFor 'campaigns' }}/materials2/{{_id}}">Materiales</a></button> -->
+            <button type="button" class="btn btn-primary"><a style="color: white;" href="{{ pathFor 'campaigns' }}/timeline/{{_id}}">Timeline</a></button>
+            <button type="button" class="btn btn-default"><a style="color: black;" href="{{ pathFor 'campaigns' }}/detail/{{_id}}">Detalle</a></button>
+             <button type="button" class="btn btn-default"><a style="color: black;" href="{{ pathFor 'campaigns' }}/{{_id}}"><i class="ion-gear-b"></i></a></button>
             </div>
 
               <div class="progress">
@@ -139,7 +141,7 @@
 {{/autoForm}} -->
 <div class="content tablecenter">
 <div class="row">
-{{#autoForm collection="Campaigns" doc=this id="Timeline" type="update-pushArray" scope="timeline"}}
+{{#autoForm collection="Campaigns" doc=this id="Timeline" type="update-pushArray" scope="detail"}}
 <fieldset>
 <div class="col-md-4">
 <legend>1. Selecciona el Tipo de Evento</legend>
@@ -304,3 +306,195 @@
 </div>
   {{> _appFooter}}
 </template>
+<template name="Detail">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Implementación de Materiales
+            <small>de la Camapaña</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Campañas</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content">
+
+          <div class="box">
+            <div class="box-header">
+              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+              <div class="col-md-2 col-sm-6 col-xs-12">
+
+              <span class="info-box-icon">
+              <div align="center"><img class="img-circle circle2" style="margin-bottom: 10px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{file.[0].fileId}}"></div>
+            </span>
+            <div class="info-box-content">
+              <span class="info-box-text">PERFORMACE</span>
+              <span class="info-box-number">Campaña</span>
+            </div>
+
+
+              </div>
+             <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion-settings"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fabricado</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-steam"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Despachado</span>
+              <span class="info-box-number">90<small>%</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="ion ion-ios-download-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Recepcionado</span>
+              <span class="info-box-number">41,410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-checkmark-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Instalado</span>
+              <span class="info-box-number">760</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-thumbsup"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">OK</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+              <table id="example1" class="table table-hover">
+                <thead style="background:#367fa9;">
+
+                <tr>
+                  <th><div style="color:white;">Material</div></th><th><div style="color:white;">Foto</div></th><th><div style="color:white;">Fabricado</div></th><th><div style="color:white;">Despachado</div></th><th><div style="color:white;">Recepcionado</div></th><th><div style="color:white;">Instalado</div></th><th><div style="color:white;">OK</div></th><th><div style="color:white;">Status</div></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {{# each materials }}
+
+                 <tr>
+                 <th>{{name}}</th>
+                 <td><img class="img-circle" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}" style="width:80px; height:80px;" alt="User Avatar"></td>
+                 <td>
+                 <div class="progress-group">
+                    <span class="progress-text">Un: {{buy}}</span>
+                    <span class="progress-number"><b>70</b>%</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
+                    </div>
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                    <span class="progress-text">Un: {{buy}}</span>
+                    <span class="progress-number"><b>70</b>%</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-red" style="width: 80%"></div>
+                    </div>
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                    <span class="progress-text">Un: {{buy}}</span>
+                    <span class="progress-number"><b>70</b>%</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-blue" style="width: 80%"></div>
+                    </div>
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                    <span class="progress-text">Un: {{buy}}</span>
+                    <span class="progress-number"><b>70</b>%</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
+                    </div>
+                  </div>
+                 </td>
+                  <td>
+                 <div class="progress-group">
+                    <span class="progress-text">Un: {{buy}}</span>
+                    <span class="progress-number"><b>70</b>%</span>
+
+                    <div class="progress sm">
+                      <div class="progress-bar progress-bar-success" style="width: 80%"></div>
+                    </div>
+                  </div>
+                 </td>
+                 <td><button type="button" class="btn btn-primary"><a style="color: white;" href="{{ pathFor 'campaigns' }}/materials/{{_id}}">Status</a></button></td>
+                 </tr>
+                             
+                {{/each}}
+                </tbody>
+              
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+<div class="content tablecenter">
+</div>
+</div>
+</div>
+  {{> _appFooter}}
+</template>
+
+
+

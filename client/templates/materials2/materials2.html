@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col-sm-4 border-right">
                   <div class="description-block">
-                    <h5 class="description-header">{{buy}}</h5>
+                    <h5 class="description-header">{{countdetailbuy}}</h5>
                     <span class="description-text">Comprados</span>
                   </div>
                   <!-- /.description-block -->
@@ -52,7 +52,7 @@
                 <!-- /.col -->
                 <div class="col-sm-4">
                   <div class="description-block">
-                    <h5 class="description-header">{{stock}}</h5>
+                    <h5 class="description-header">{{countdetailstock}}</h5>
                     <span class="description-text">Stock</span>
                   </div>
                   <!-- /.description-block -->
@@ -93,7 +93,7 @@
       <legend>Crear Material</legend>
       {{> afQuickField name='name'}}
       {{> afQuickField name='buy'}}
-      {{> afQuickField name='stock'}}
+      {{> afQuickField name='campaignId'}}
       {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
 
 
@@ -133,8 +133,7 @@
     <fieldset>
       <legend>Editar Material</legend>
       {{> afQuickField name='name'}}
-      {{> afQuickField name='buy'}}
-      {{> afQuickField name='stock'}}
+      {{> afQuickField name='campaignId'}}
       {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
     </fieldset>
     <div align="right">
@@ -143,6 +142,256 @@
     <button type="submit" class="btn btn-primary cancel">Guardar</button>
     </div>
   {{/autoForm}}
+  {{#autoForm collection="Materials2" doc=this id="Detail" type="update-pushArray" scope="detail"}}
+  <fieldset>
+      <legend>Asigna el Material a una Tienda</legend>
+      {{> afQuickField name='shopId'}}
+    </fieldset>
+    <div align="right">
+    <button type="submit" class="btn btn-primary">Asingar</button>
+    </div>
+  {{/autoForm}}
+<table style="width:100%">
+  <tr>
+    <th>ID Material</th>
+    <th>Tienda</th> 
+  </tr>
+    {{# each detail}}
+   <tr>
+    <td>{{_id}}</td> 
+    <td>{{shopname shopId}}</td> 
+  </tr>
+  {{/each}}
+</table>
+
+</div>
+</div>
+  {{> _appFooter}}
+</template>
+<template name="ShowMaterials3">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Material</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Materiales</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content tablecenter">
+  <div class="info-box bg-gray">
+            <span class="info-box-icon"><img class="img-circle" style="height: 80px;
+    width: 80px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Stock</span>
+              <span class="info-box-number">0</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 0%"></div>
+              </div>
+                  <span class="progress-description">
+                    Haz asignado 100 Unidades
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+  {{#autoForm collection="Materials2" doc=this id="Detail" type="update-pushArray" scope="detail"}}
+  <fieldset>
+      <legend>Asigna el Material a una Tienda</legend>
+      {{> afQuickField name='shopId'}}
+    </fieldset>
+    <div align="right">
+    <button type="submit" class="btn btn-primary">Asingar</button>
+    </div>
+  {{/autoForm}}
+<table style="width:100%">
+  <tr>
+    <th>ID Material</th>
+    <th>Tienda</th> 
+  </tr>
+    {{# each detail}}
+   <tr>
+    <td>{{_id}}</td> 
+    <td>{{shopname shopId}}</td> 
+  </tr>
+  {{/each}}
+</table>
+ <div class="box">
+            <div class="box-header">
+              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+              <div class="col-md-2 col-sm-6 col-xs-12">
+
+              <span class="info-box-icon">
+              <div align="center"><img class="img-circle circle2" style="margin-bottom: 10px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></div>
+            </span>
+            <div class="info-box-content">
+              <span class="info-box-text">ASIGNACIÓN</span>
+              <span class="info-box-number">Material</span>
+            </div>
+
+
+              </div>
+             <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion-settings"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fabricado</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-steam"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Despachado</span>
+              <span class="info-box-number">90<small>%</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="ion ion-ios-download-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Recepcionado</span>
+              <span class="info-box-number">41,410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-checkmark-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Instalado</span>
+              <span class="info-box-number">760</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-thumbsup"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">OK</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+              <table id="example1" class="table table-hover">
+                <thead style="background:#367fa9;">
+
+                <tr>
+                  <th><div style="color:white;">Tienda</div></th><th><div style="color:white;">ID</div></th><th><div style="color:white;">Fabricado</div></th><th><div style="color:white;">Despachado</div></th><th><div style="color:white;">Recepcionado</div></th><th><div style="color:white;">Instalado</div></th><th><div style="color:white;">OK</div></th><th><div style="color:white;">Status</div></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {{# each detail}}
+
+
+                 <tr>
+                 <th>{{shopname shopId}}</th>
+                 <td>{{_id}}</td>
+                 <td>
+                 <div class="progress-group">
+                    {{#if fab}}
+                    <span class="label label-success">OK</span>
+                    <span class="form-control" disabled>{{fabtext}}</span>
+                    {{else}}
+                    <span class="label label-warning">Pendiente</span>
+                    <span class="form-control">{{fabtext}}</span>
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                     {{#if send}}
+                    <span class="label label-success">OK</span>
+                    <span class="form-control" disabled>{{sendtext}}</span>
+                    {{else}}
+                    <span class="label label-warning">Pendiente</span>
+                    <span class="form-control">{{sendtext}}</span>
+                    {{/if}}
+            
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                    <span class="label label-success">{{receive}}</span>
+                    <span class="form-control">{{receivetext}}</span>
+                  </div>
+                 </td>
+                 <td>
+                 <div class="progress-group">
+                 <span class="label label-success">{{install}}</span>
+                    <span class="form-control">{{installtext}}</span>
+                  </div>
+                 </td>
+                  <td>
+                 <div class="progress-group">
+                    <span class="label label-success">{{ok}}</span>
+                    <span class="form-control">{{oktext}}</span>
+
+          
+                  </div>
+                 </td>
+                 <td><button type="button" class="btn btn-primary"><a style="color: white;" href="{{ pathFor 'campaigns' }}/materials/{{_id}}">Guardar</a></button></td>
+                 </tr>
+                             
+                {{/each}}
+                </tbody>
+              
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+{{> quickForm collection="Materials2" doc=this type="update"}}
+{{#autoForm collection="Materials2" doc=this id="detailmaterial" type="update-pushArray" scope="detail"}}
+<fieldset>
+{{> afQuickField name="_id"}}
+{{> afQuickField name="shopId"}}
+{{> afQuickField name="fab"}}
+{{> afQuickField name="fabtext"}}
+</fieldset>
+<div align="right"><button type="submit" class="btn btn-primary cancel">Actualizar</button></div>
+{{/autoForm}}
 </div>
 </div>
   {{> _appFooter}}

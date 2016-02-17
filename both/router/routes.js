@@ -96,6 +96,10 @@ Router.route('/materials2/:_id', function () {
   var item = Materials2.findOne({_id: this.params._id});
   this.render('ShowMaterials2', {data: item});
 });
+Router.route('/campaigns/materials/:_id', function () {
+  var item = Materials2.findOne({_id: this.params._id});
+  this.render('ShowMaterials3', {data: item});
+});
 Router.route('/campaigns/:_id', function () {
   var item = Campaigns.findOne({_id: this.params._id});
   this.render('ShowCampaigns', {data: item});
@@ -103,6 +107,10 @@ Router.route('/campaigns/:_id', function () {
 Router.route('/campaigns/timeline/:_id', function () {
   var item = Campaigns.findOne({_id: this.params._id});
   this.render('Timeline', {data: item});
+});
+Router.route('/campaigns/detail/:_id', function () {
+  var item = Campaigns.findOne({_id: this.params._id});
+  this.render('Detail', {data: item});
 });
 Router.route('/stock/:_id', function () {
   var item = Stock.findOne({_id: this.params._id});
