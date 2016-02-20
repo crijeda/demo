@@ -168,7 +168,8 @@
 </div>
   {{> _appFooter}}
 </template>
-<template name="ShowMaterials3">
+
+<template name="Implementation">
   {{> _appHeader}}
   <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -203,7 +204,8 @@
             </div>
             <!-- /.info-box-content -->
           </div>
-  {{#autoForm collection="Materials2" doc=this id="Detail" type="update-pushArray" scope="detail"}}
+
+  <!--  {{#autoForm collection="Implementation" doc=this id="Detail" type="update-pushArray" scope="detail"}}
   <fieldset>
       <legend>Asigna el Material a una Tienda</legend>
       {{> afQuickField name='shopId'}}
@@ -211,18 +213,30 @@
     <div align="right">
     <button type="submit" class="btn btn-primary">Asingar</button>
     </div>
-  {{/autoForm}}
+  {{/autoForm}} -->
+
+<!--   {{#autoForm collection="Materials2" doc=this id="Detail" type="update-pushArray" scope="detail"}}
+  <fieldset>
+      <legend>Asigna el Material a una Tienda</legend>
+      {{> afQuickField name='shopId'}}
+    </fieldset>
+    <div align="right">
+    <button type="submit" class="btn btn-primary">Asingar</button>
+    </div>
+  {{/autoForm}} -->
+  <div>{{ implement }}</div>
+  hola2
 <table style="width:100%">
   <tr>
     <th>ID Material</th>
     <th>Tienda</th> 
   </tr>
-    {{# each detail}}
+<!--     {{# each implementation}}
    <tr>
     <td>{{_id}}</td> 
     <td>{{shopname shopId}}</td> 
   </tr>
-  {{/each}}
+  {{/each}} -->
 </table>
  <div class="box">
             <div class="box-header">

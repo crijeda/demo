@@ -141,7 +141,7 @@
 {{/autoForm}} -->
 <div class="content tablecenter">
 <div class="row">
-{{#autoForm collection="Campaigns" doc=this id="Timeline" type="update-pushArray" scope="detail"}}
+{{#autoForm collection="Campaigns" doc=this id="Timeline" type="update-pushArray" scope="timeline"}}
 <fieldset>
 <div class="col-md-4">
 <legend>1. Selecciona el Tipo de Evento</legend>
@@ -478,7 +478,7 @@
                     </div>
                   </div>
                  </td>
-                 <td><button type="button" class="btn btn-primary"><a style="color: white;" href="{{ pathFor 'campaigns' }}/materials/{{_id}}">Status</a></button></td>
+                 <td><button type="button" class="btn btn-primary"><a style="color: white;" href="{{ pathFor 'campaigns' }}/implementation/{{_id}}">Status</a></button></td>
                  </tr>
                              
                 {{/each}}

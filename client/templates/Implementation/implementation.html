@@ -1,0 +1,279 @@
+<template name="Implementation">
+  {{> _appHeader}}
+  <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1 style="margin-left: 10px">
+            Detalle
+            <small>Editar Material</small>
+          </h1>
+          <ol class="breadcrumb" style="margin-right: 10px; margin-left: 5px;">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Materiales</li>
+            <li class="active">Detalle</li>
+          </ol>
+        </section>
+      
+
+<div class="content tablecenter">
+  <div class="info-box bg-gray">
+            <span class="info-box-icon"><img class="img-circle" style="height: 80px;
+    width: 80px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Stock</span>
+              <span class="info-box-number">0</span>
+
+              <div class="progress">
+                <div class="progress-bar" style="width: 0%"></div>
+              </div>
+                  <span class="progress-description">
+                    Haz asignado {{implementcount}} Unidades
+                  </span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+
+   {{#autoForm id="implementation" type="insert" collection="Implementation"}}
+  <fieldset>
+      <legend>Asigna el Material a una Tienda</legend>
+      {{> afQuickField name='shopId'}}
+      <span style="display: none">{{> afQuickField name='material2Id' value=this._id}} </span>
+    </fieldset>
+    <div align="right">
+    <button type="submit" class="btn btn-primary" onClick="history.go(0)">Asingar</button>
+    </div>
+  {{/autoForm}}
+<br>
+ <div class="box">
+            <div class="box-header">
+              <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="row">
+              <div class="col-md-2 col-sm-6 col-xs-12">
+
+              <span class="info-box-icon">
+              <div align="center"><img class="img-circle circle2" style="margin-bottom: 10px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></div>
+            </span>
+            <div class="info-box-content">
+              <span class="info-box-text">ASIGNACIÓN</span>
+              <span class="info-box-number">Material</span>
+            </div>
+
+
+              </div>
+             <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion-settings"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fabricado</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-steam"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Despachado</span>
+              <span class="info-box-number">90<small>%</small></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-blue"><i class="ion ion-ios-download-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Recepcionado</span>
+              <span class="info-box-number">41,410</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-checkmark-outline"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Instalado</span>
+              <span class="info-box-number">760</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-thumbsup"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">OK</span>
+              <span class="info-box-number">2,000</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+              <table id="example1" class="table table-hover">
+                <thead style="background:#367fa9;">
+
+                <tr>
+                  <th><div style="color:white;">Tienda</div></th><th><div style="color:white;">Fabricado</div></th><th><div style="color:white;">Despachado</div></th><th><div style="color:white;">Recepcionado</div></th><th><div style="color:white;">Instalado</div></th><th><div style="color:white;">OK</div></th><th><div style="color:white;">Fotografia</div></th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {{# each implement}}
+                 <tr>
+                  <td>
+                  {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                    {{> afFormGroup name="shopId" label=false}}
+                  {{/autoForm}}
+                  <button type="button" class="btn btn-danger btn-delete"><a style="color: white;" href="#">Borrar</a></button>
+                  </td>
+                 <td>
+                 <div class="progress-group">
+                    {{#if validator fab}}
+                        <span class="label label-success">OK </span>
+                       <textarea class="form-control" disabled="">{{fabtext}}</textarea>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="fab" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>{{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="fabtext" label=false type="textarea"}}
+                        {{/autoForm}}
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                         {{> afFormGroup name="fab" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 <td>
+                    <div class="progress-group">
+                    {{#if validator send}}
+                        <span class="label label-success">OK </span>
+                       <textarea class="form-control" disabled="">{{sendtext}}</textarea>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="send" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>{{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="sendtext" label=false type="textarea"}}
+                        {{/autoForm}}
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                         {{> afFormGroup name="send" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 <td>
+                    <div class="progress-group">
+                    {{#if validator receive}}
+                        <span class="label label-success">OK </span>
+                       <textarea class="form-control" disabled="">{{receivetext}}</textarea>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="receive" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>{{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="receivetext" label=false type="textarea"}}
+                        {{/autoForm}}
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                         {{> afFormGroup name="receive" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 <td>
+                    <div class="progress-group">
+                    {{#if validator install}}
+                        <span class="label label-success">OK </span>
+                       <textarea class="form-control" disabled="">{{installtext}}</textarea>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="install" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>{{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="installtext" label=false type="textarea"}}
+                        {{/autoForm}}
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                         {{> afFormGroup name="install" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 <td>
+                   <div class="progress-group">
+                    {{#if validator ok}}
+                        <span class="label label-success">OK </span>
+                       <textarea class="form-control" disabled="">{{oktext}}</textarea>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="ok" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>{{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="oktext" label=false type="textarea"}}
+                        {{/autoForm}}
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                         {{> afFormGroup name="ok" type="select" options=options firstOption="Selecciona una Opción" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                    <td>
+                   <div class="progress-group">
+                    {{#if fileId}}
+                        <span class="label label-success">OK </span>
+                        <a href="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"><img class="img-circle" style="height: 80px; width: 80px;" src="{{ pathFor 'dashboard' }}cfs/files/uploads/{{fileId}}"></a>
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="fileId" type="cfs-file" collection="uploads" label=false}}
+                        {{/autoForm}}
+                    {{else}}
+                        <span class="label label-warning">Pendiente</span>
+                        <img class="img-circle" style="height: 80px; width: 80px;" src="{{ pathFor 'dashboard' }}images/camera.png">
+                        {{#autoForm id=this._id type="update" collection="Implementation" doc=this autosave=true}}
+                        {{> afFormGroup name="fileId" type="cfs-file" collection="uploads" label=false}}
+                        {{/autoForm}}
+                    {{/if}}
+                    
+                  </div>
+                 </td>
+                 </tr>
+                             
+                {{/each}}
+                </tbody>
+               
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+</div>
+</div>
+  {{> _appFooter}}
+</template>

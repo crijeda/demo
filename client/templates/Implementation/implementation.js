@@ -1,84 +1,59 @@
-Template.materials2.rendered = function() {
-
-};
-
 if (Meteor.isClient) {
   // This code only runs on the client
   Meteor.subscribe("materials2");
   Meteor.subscribe("uploads");
+  Meteor.subscribe("implementation");
 
-  Template.registerHelper('shopname', function(string) {
-    var shop = Shops.find({_id:string}).fetch();
-    return shop[0].name;
-  });
- Template.materials2.helpers({
+Template.Implementation.helpers({
 
-  router: function() {
-    var router = Router.current().route.getName();
+    implement: function() {
+    var implement = Implementation.find({material2Id:this._id}).fetch();
+    return implement
+  },
+    router: function() {
+    var router = this._id;
     return router
+
   },
-  
-  // materialcamp: function() {
-  //   var materialcamp = Materials2.find({campaignId:this._id});
-  //   return materialcamp
-  // },
-  
-  // uploads:function(){
-  //     var file = _.pluck(Materials2.find({_id: "Hd3MQbByRp6M5CqzY"}).fetch(), 'fileId');
-  //     var media = _.pluck(Uploads.find({_id: file}).fetch(), 'url');
-  //     console.log(media) 
-
-  // },
-  // media:function(){
-  //       var id = Materials2.findOne({_id:this._id});
-  //     return Uploads.find({_id:id}).url;
-  // }     
-
-});
-
-  Template.materials3.helpers({
-
-  material: function() {
-    var material = Materials2.find({_id:this._id}).fetch();
-    return material
-  }
-
-});
-
-Template.materials2.events({
-  'click .edit': function () {
-    // alert(this._id);
-    window.location = Router.url('materials2')+'/'+ this._id;
-    
+   implementcount: function() {
+    var implement = Implementation.find({material2Id:this._id}).fetch();
+    return implement.length;
   },
-  // 'change .fileInput':function(event,template){
-  //     FS.Utility.eachFile(event,function(file){
-  //     var fileObj= new FS.File(file);
-  //     Uploads.insert(fileObj,function(err){
-  //       console.log(err)
-  //     })
-  //   })
-  //   }
+   options: function () {
+        return [
+          {label: "OK", value: true},
+          {label: "Pendiente", value: false},
+        ];
+    },
 });
-
-Template.ShowMaterials2.events({
-
-    'click .remove': function () {
-    Materials2.remove(this._id);
-    // alert(this._id);
-    Router.go('materials2');
-    
-  },
-     'click .cancel': function () {
-    // alert(this._id);
-    Router.go('materials2');
-    
-  }
-});
-
 }
 
-Template.ShowMaterials2.rendered = function() {
+Template.registerHelper('validator', function(string) {
+         if (string == "true") {
+            return "validador"
+        }
+         else { 
+
+        return ""
+
+        }
+});
+
+Template.Implementation.events({
+
+   'click .btn-delete': function(event, template) {
+
+    var r = confirm('Seguro que quieres borrar el Material?');
+
+          if(r){
+
+                Implementation.remove({_id:this._id});
+            }
+
+  }
+});
+
+Template.Implementation.rendered = function() {
   $('.sidebar-toggle').each(function() {
         var group = $(this);
         $(this).find(".btn").click(function(e) {
@@ -139,3 +114,5 @@ Template.ShowMaterials2.rendered = function() {
         }
     });
 }
+
+

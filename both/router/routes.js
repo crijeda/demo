@@ -96,9 +96,9 @@ Router.route('/materials2/:_id', function () {
   var item = Materials2.findOne({_id: this.params._id});
   this.render('ShowMaterials2', {data: item});
 });
-Router.route('/campaigns/materials/:_id', function () {
+Router.route('/campaigns/implementation/:_id', function () {
   var item = Materials2.findOne({_id: this.params._id});
-  this.render('ShowMaterials3', {data: item});
+  this.render('Implementation', {data: item});
 });
 Router.route('/campaigns/:_id', function () {
   var item = Campaigns.findOne({_id: this.params._id});
