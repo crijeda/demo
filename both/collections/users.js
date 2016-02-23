@@ -63,6 +63,14 @@ Schema.createUserFormSchema = new SimpleSchema({
     phone: {
     type: String,
     label: 'Telefono'
+  },
+    area: {
+    type: String,
+    label: 'Area'
+  },
+     position: {
+    type: String,
+    label: 'Cargo'
   }
 });
 
@@ -123,6 +131,8 @@ TabularTables.Users = new Tabular.Table({
             return x.name;
       }
     },
+    {data: "area", title: "Area"},
+    {data: "position", title: "Cargo"},
     { data: "phone", title: "Telefono", render: function (val, type, doc) {
             var x = val;
             if(!x){

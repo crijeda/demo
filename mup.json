@@ -2,11 +2,11 @@
   // Server authentication info
   "servers": [
     {
-      "host": "52.35.121.71",
+      "host": "52.36.202.123",
       "username": "ubuntu",
       // "password": "password"
       // or pem file (ssh based authentication)
-      "pem": "/Users/cristianojeda/Desktop/joaquin.pem"
+      "pem": "/Users/cristianojeda/Desktop/whizzy.pem"
     }
   ],
 
@@ -20,7 +20,7 @@
   "nodeVersion": "0.10.40",
 
   // Install PhantomJS in the server
-  "setupPhantom": false,
+  "setupPhantom": true,
 
   // Show a progress bar during the upload of the bundle to the server. 
   // Might cause an error in some rare cases if set to true, for instance in Shippable CI
@@ -34,7 +34,7 @@
 
   // Configure environment
   "env": {
-    "ROOT_URL": "http://52.35.121.71"
+    "ROOT_URL": "http://52.36.202.123"
     
      // "MONGO_URL": "mongodb://whizzy:whizzy2015@52.26.188.17:27017/meteor"
   },

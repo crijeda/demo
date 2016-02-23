@@ -37,6 +37,8 @@
             {{> afQuickField name="phone"}}
             {{> afQuickField name="password" type="password"}}
             {{> afQuickField name="passwordConfirmation" type="password"}}
+            {{> afQuickField name="area"}}
+            {{> afQuickField name="position"}}
             <div align="right">
               <button type="reset" class="btn btn-default">Reset</button>
               <button type="submit" class="btn btn-primary">Crear</button>             
@@ -70,21 +72,29 @@
      
         <div class="row">
         <div class="content tablecenter">
-        {{> quickForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}}
-<!--         {{#autoForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}}
+        <!-- {{> quickForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}} -->
+        {{#autoForm schema=schema collection="Meteor.users" doc=this id="ShowProfile" type="update"}}
           <fieldset>
-            <legend>Perfil de {{username}} - {{emails.[0].address}}</legend>
+            <legend>Perfil de {{username}}</legend>
             {{> afQuickField name="username"}}
-            {{> afQuickField name="email"}}
+            <!-- <input type="text" class="form-control" disabled>{{emails.[0].address}}</input> -->
+            <div class="form-group">
+                      <label>E-mail</label>
+                      <input class="form-control" value="{{emails.[0].address}}" disabled>
+                      </div>
+            {{> afQuickField name="roles" type="select" options=RolesOptions}}
             {{> afQuickField name="zoneId"}}
-            {{> afQuickField name="passwordConfirmation"}}
+            {{> afQuickField name="phone"}}
+            {{> afQuickField name="area"}}
+            {{> afQuickField name="position"}}
+            <!-- {{> afQuickField name="passwordConfirmation"}} -->
             <div align="right">
               <button type="button" class="btn btn-danger remove">Borrar</button>
               <button type="button" class="btn btn-default cancel">Cancelar</button>
               <button type="submit" class="btn btn-primary cancel">Guardar</button>           
             </div>
           </fieldset>
-      {{/autoForm}} -->
+      {{/autoForm}}
         </div>
         </div>
         

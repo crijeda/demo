@@ -13,7 +13,7 @@
           </ol>
         </section>
       
-        <section class="content">
+        <section class="content tablecenter">
         <div class="row">
         {{# each campaigns }}
         <div class="col-md-6">
@@ -46,17 +46,15 @@
           </div>
           {{/each}}
           </div>
-          <section class="content-header">
-            <h1 style="margin-left: 10px">
-            Crear Campaña
-            <small>Ingresa los requerimientos</small>
-            </h1>
-          </section>
-           <div class="row">
-        <div class="content">
+          
+   
+        </section><!-- /.content -->
+    <div class="content tablecenter">
+    <div class="content" style="background:white;">
+    <div class="row">
     {{#autoForm collection="Campaigns" id="campaigns" type="insert"}}
     <fieldset>
-      <legend>Crear Campaña</legend>
+      <legend>CREAR CAMPAÑA</legend>
       {{> afQuickField name='name'}}
       {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
       {{> afQuickField name='description'}}
@@ -69,8 +67,7 @@
 
         </div>
         </div>
-        </section><!-- /.content -->
-
+        </div>
       </div><!-- /.content-wrapper -->
 
 
@@ -323,7 +320,7 @@
         </section>
       
 
-<div class="content">
+<div class="content tablecenter">
 
           <div class="box">
             <div class="box-header">
@@ -489,8 +486,6 @@
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-<div class="content tablecenter">
-</div>
 </div>
 </div>
   {{> _appFooter}}

@@ -81,6 +81,11 @@ if (Meteor.isClient) {
     return router
 
   },
+  branchscount: function() {
+    var branchs = Branchs.find().fetch();
+    return branchs.length
+
+  },
 
 });
 

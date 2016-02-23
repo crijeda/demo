@@ -5,6 +5,7 @@ Template.users.rendered = function() {
 
 if (Meteor.isClient) {
   // This code only runs on the client
+  Meteor.subscribe("users");
 
  Template.ButtonShowUsers.events({
     'click .edit': function () {
@@ -47,6 +48,13 @@ schema: function () {
 
 schema: function () {
         return Schema.createUserFormSchema;
+    },
+    RolesOptions: function () {
+        return {
+      "Admin": "Admin",
+      "Chief": "Jefe",
+      "Executive": "Ejecutivo"
+        }
     }
 
 });

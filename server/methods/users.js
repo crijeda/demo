@@ -6,6 +6,6 @@ Meteor.methods({
     var newUser = Accounts.createUser({username: doc.username,
         email: doc.email,
         password: doc.password});
-    Meteor.users.update(newUser, {$set: {roles: doc.roles, zoneId:doc.zoneId, phone: doc.phone}});
+    Meteor.users.update(newUser, {$set: {roles: doc.roles, zoneId:doc.zoneId, phone: doc.phone, area: doc.area, position: doc.position}});
   }
 });
