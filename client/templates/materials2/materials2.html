@@ -63,7 +63,7 @@
 
          <!--      <button type="button" class="btn btn-danger delete">Borar</button>
               <button type="button" class="btn btn-warning edit">Editar</button> -->
-              <button type="button" class="btn btn-warning edit" style="width:100%">Detalle</button>
+              <a href="{{ pathFor 'materials2' }}/{{_id}}"><button type="button" class="btn btn-warning edit" style="width:100%">Detalle</button></a>
 
             </div>
           </div>
@@ -133,6 +133,7 @@
     <fieldset>
       <legend>Editar Material</legend>
       {{> afQuickField name='name'}}
+      {{> afQuickField name='buy'}}
       {{> afQuickField name='campaignId'}}
       {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
     </fieldset>
@@ -142,27 +143,6 @@
     <button type="submit" class="btn btn-primary cancel">Guardar</button>
     </div>
   {{/autoForm}}
-  {{#autoForm collection="Materials2" doc=this id="Detail" type="update-pushArray" scope="detail"}}
-  <fieldset>
-      <legend>Asigna el Material a una Tienda</legend>
-      {{> afQuickField name='shopId'}}
-    </fieldset>
-    <div align="right">
-    <button type="submit" class="btn btn-primary">Asingar</button>
-    </div>
-  {{/autoForm}}
-<table style="width:100%">
-  <tr>
-    <th>ID Material</th>
-    <th>Tienda</th> 
-  </tr>
-    {{# each detail}}
-   <tr>
-    <td>{{_id}}</td> 
-    <td>{{shopname shopId}}</td> 
-  </tr>
-  {{/each}}
-</table>
 
 </div>
 </div>

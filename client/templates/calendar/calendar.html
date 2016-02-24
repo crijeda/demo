@@ -11,14 +11,22 @@
     }
 </style>
 </head>
+{{> _appHeader}}
 
-<body class="tablecenter">
+
+<body class="tablecenter" style="margin-left: 250px; margin-right: 20px;">
+
+	
+
 
 <input action="action" type="button" class="btn btn-primary" style="width:100%;" value="Volver" onclick="history.go(-1);" />
 
   {{> scheduler}}
-
+   
+ 
 </body>
+
+{{> _appFooter}}
 </template>
 
 <template name="scheduler">

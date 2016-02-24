@@ -24,7 +24,11 @@ Materials2.attachSchema(new SimpleSchema({
         });
       }
     }
+  },
+   fileId: {
+    type: String
   }
+
 
 }));
 
